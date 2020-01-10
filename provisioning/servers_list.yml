@@ -1,0 +1,14 @@
+---
+- vagrant_box_host: "vg-controller-81"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-controller-81"
+  vbox_ram: 512
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.18.81
+  guest_port: 80
+  host_port: 828
+  storage_bootstrap: "provisioning/storage_list.yml"
+  server_bootstrap: "provisioning/deploy.yml"
+  ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"

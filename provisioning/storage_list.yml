@@ -1,0 +1,63 @@
+---
+# only one controller allowed per system bus - Vbox -Stderr: VBoxManage.exe: error: Too many storage controllers of this type
+- controller_disk_size: 2048 # MBs
+  system_bus_name: "system-bus-pcie"
+  system_bus_type: "pcie"
+  disk_controller_type: "NVMe"
+  disk_controller_portcount: 2
+  medium_type: "hdd"
+  medium_port: 0
+  file_to_controller_disk: "NVMe_controller_disk1.vdi"
+
+
+- controller_disk_size: 2048 # MBs
+  system_bus_name: "system-bus-sas"
+  system_bus_type: "sas"
+  disk_controller_type: "LSILogicSAS"
+  disk_controller_portcount: 2
+  medium_type: "hdd"
+  medium_port: 0
+  file_to_controller_disk: "LSILogicSAS_controller_disk1.vdi"
+
+
+- controller_disk_size: 2048 # MBs
+  system_bus_name: "system-bus-scsi"
+  system_bus_type: "scsi"
+  disk_controller_type: "BusLogic" # BusLogic LSILogic
+  disk_controller_portcount: 16
+  medium_type: "hdd"
+  medium_port: 0
+  file_to_controller_disk: "BusLogic_controller_disk1.vdi"
+
+
+
+#### IF controller already in place, BOOT ORDER PROBLEM !!
+# - controller_disk_size: 2048 # MBs
+#   system_bus_name: "IDE Controller"
+#   system_bus_type: "ide"
+#   disk_controller_type: "PIIX4" # PIIX4 PIIX3 ICH6
+#   disk_controller_portcount: 2
+#   medium_type: "hdd"
+#   medium_port: 1
+#   medium_device: 1 # --port 1,--device 1 secondary slave
+#   file_to_controller_disk: "PIIX4_controller_disk2.vdi"
+
+#### IF controller already in place
+- controller_disk_size: 2048 # MBs
+  system_bus_name: "SATA Controller"
+  system_bus_type: "sata"
+  disk_controller_type: "IntelAhci"
+  disk_controller_portcount: 2
+  medium_type: "hdd"
+  medium_port: 1
+  file_to_controller_disk: "IntelAhci_controller_disk1.vdi"
+
+#### IF controller already in place
+- controller_disk_size: 4096 # MBs
+  system_bus_name: "SATA Controller"
+  system_bus_type: "sata"
+  disk_controller_type: "IntelAhci"
+  disk_controller_portcount: 2
+  medium_type: "hdd"
+  medium_port: 2
+  file_to_controller_disk: "IntelAhci_controller_disk2.vdi"
