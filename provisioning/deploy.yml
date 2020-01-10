@@ -11,3 +11,10 @@
     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
   roles:
     - common
+
+- name: "Install docker"
+  gather_facts: true
+  hosts:  vg-controller-81
+  become: yes
+  roles:
+    - docker
