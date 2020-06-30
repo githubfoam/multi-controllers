@@ -6,5 +6,5 @@
       {{ item.ip }} {{ item.namelong }} {{ item.nameshort }}
     marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.nameshort }}"
   with_items:
-  - { ip: 192.168.18.81, namelong: vg-controllert-79.local, nameshort: vg-controller-81 }
+  - { ip: 192.168.18.82, namelong: vg-controller-82.local, nameshort: vg-controller-82 }
   when: add_host_entries

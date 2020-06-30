@@ -43,14 +43,14 @@
 #   file_to_controller_disk: "PIIX4_controller_disk2.vdi"
 
 #### IF controller already in place
-- controller_disk_size: 2048 # MBs
-  system_bus_name: "SATA Controller"
-  system_bus_type: "sata"
-  disk_controller_type: "IntelAhci"
-  disk_controller_portcount: 2
-  medium_type: "hdd"
-  medium_port: 1
-  file_to_controller_disk: "IntelAhci_controller_disk1.vdi"
+# - controller_disk_size: 2048 # MBs
+#   system_bus_name: "SATA Controller"
+#   system_bus_type: "sata"
+#   disk_controller_type: "IntelAhci"
+#   disk_controller_portcount: 2
+#   medium_type: "hdd"
+#   medium_port: 1
+#   file_to_controller_disk: "IntelAhci_controller_disk1.vdi"
 
 #### IF controller already in place
 - controller_disk_size: 4096 # MBs

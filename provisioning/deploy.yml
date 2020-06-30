@@ -12,9 +12,9 @@
   roles:
     - common
 
-- name: "Install docker"
-  gather_facts: true
-  hosts:  vg-controller-81
-  become: yes
-  roles:
-    - docker
+# - name: "Install docker"
+#   gather_facts: true
+#   hosts:  vg-controller-82
+#   become: yes
+#   roles:
+#     - docker

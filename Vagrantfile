@@ -48,15 +48,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                   end # end of case
 
                 end # end of unless
-                
+
               end
 
           end # end of box.vm.providers
 
+          # box.vm.provision :shell, path: "scripts/bootstrap.sh"
+          # box.vm.provision "shell", inline: <<-SHELL
+          # echo "===================================================================================="
+          #                           hostnamectl status
+          # echo "===================================================================================="
+          # echo "         \   ^__^                                                                  "
+          # echo "          \  (oo)\_______                                                          "
+          # echo "             (__)\       )\/\                                                      "
+          # echo "                 ||----w |                                                         "
+          # echo "                 ||     ||                                                         "
+          # SHELL
+          box.vm.provision "shell", path: server["server_script"]
+
           box.vm.provision "ansible_local" do |ansible|
               # ansible.compatibility_mode = "2.0"
               ansible.compatibility_mode = server["ansible_compatibility_mode"]
-              ansible.version = server["ansible_version"]
+              # ansible.version = server["ansible_version"] # not pinning version for auto updates
               ansible.playbook = server["server_bootstrap"]
               # ansible.inventory_path = 'provisioning/hosts'
               # ansible.verbose = "vvvv" # debug
@@ -64,16 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               # ansible.galaxy_roles_path = "/etc/ansible/roles"
               # ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
            end # end if box.vm.provision
-          box.vm.provision "shell", inline: <<-SHELL
-          echo "===================================================================================="
-                                    hostnamectl status
-          echo "===================================================================================="
-          echo "         \   ^__^                                                                  "
-          echo "          \  (oo)\_______                                                          "
-          echo "             (__)\       )\/\                                                      "
-          echo "                 ||----w |                                                         "
-          echo "                 ||     ||                                                         "
-          SHELL
+
         end # end of config.vm
       end  # end of servers_list.each loop
 end # end of Vagrant.configure
