@@ -15,4 +15,4 @@ echo "                 ||----w |                                                
 echo "                 ||     ||                                                         "
 echo "=========================================================================================="
 
-dnf install ansible && ansible --version
+dnf install ansible -y && ansible --version
