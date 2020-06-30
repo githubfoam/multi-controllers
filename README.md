@@ -1,6 +1,10 @@
 # multi-controllers
 sata sas scsi nvme ide
 
+Travis (.com) dev branch:
+[![Build Status](https://travis-ci.com/githubfoam/multi-controllers.svg?branch=dev)](https://travis-ci.com/githubfoam/multi-controllers)  
+
+
 ~~~
 storage layout "storage_list.yml"
 
