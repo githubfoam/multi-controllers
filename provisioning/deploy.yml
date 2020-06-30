@@ -12,9 +12,9 @@
   roles:
     - common
 
-- name: "Deploy lvm"
-  gather_facts: true
-  hosts:  vg-controller-83
-  become: yes
-  roles:
-    - cluster-lvm
+# - name: "Deploy lvm"
+#   gather_facts: true
+#   hosts:  vg-controller-83
+#   become: yes
+#   roles:
+#     - cluster-lvm
