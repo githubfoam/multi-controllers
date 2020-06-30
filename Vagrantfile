@@ -56,13 +56,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # box.vm.provision :shell, path: "scripts/bootstrap.sh"
           # box.vm.provision "shell", inline: <<-SHELL
           # echo "===================================================================================="
-          #                           hostnamectl status
-          # echo "===================================================================================="
-          # echo "         \   ^__^                                                                  "
-          # echo "          \  (oo)\_______                                                          "
-          # echo "             (__)\       )\/\                                                      "
-          # echo "                 ||----w |                                                         "
-          # echo "                 ||     ||                                                         "
           # SHELL
           box.vm.provision "shell", path: server["server_script"]
 

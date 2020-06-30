@@ -9,15 +9,29 @@ echo "==========================================================================
 vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
-# https://app.vagrantup.com/archlinux
-# vagrant box add "archlinux/archlinux" --provider=libvirt
-# vagrant up --provider=libvirt vg-arch-01
-# # vagrant ssh vg-arch-01 -c "hostnamectl"
 
-vagrant box add "bento/centos-7.7" --provider=virtualbox
-vagrant mutate "bento/centos-7.7" libvirt
+#https://github.com/chef/bento/tree/master/packer_templates/centos
+vagrant box add "bento/centos-7.8" --provider=virtualbox
+vagrant mutate "bento/centos-7.8" libvirt
 vagrant up --provider=libvirt "vg-controller-82"
 
+#https://github.com/chef/bento/tree/master/packer_templates/centos
+vagrant box add "bento/centos-8.2" --provider=virtualbox
+vagrant mutate "bento/centos-8.2" libvirt
+vagrant up --provider=libvirt "vg-controller-83"
+
+#https://github.com/chef/bento/tree/master/packer_templates/centos
+vagrant box add "bento/fedora-32" --provider=virtualbox
+vagrant mutate "bento/fedora-32" libvirt
+vagrant up --provider=libvirt "vg-controller-84"
+
+# https://app.vagrantup.com/centos/boxes/8
+vagrant box add "centos/8" --provider=libvirt
+vagrant up --provider=libvirt "vg-controller-85"
+
+# https://app.vagrantup.com/fedora/boxes/32-cloud-base
+vagrant box add "fedora/32-cloud-base"--provider=libvirt
+vagrant up --provider=libvirt "vg-controller-86"
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet

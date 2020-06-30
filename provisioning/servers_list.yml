@@ -1,8 +1,8 @@
 ---
 - vagrant_box_host: "vg-controller-82"
-  vagrant_box: "bento/centos-7.7"
+  vagrant_box: "bento/centos-7.8"
   vbox_name: "vbox-controller-82"
-  vbox_ram: 512
+  vbox_ram: 2048
   vbox_cpu: 2
   network_type: "private_network"
   vagrant_box_ip: 192.168.18.82
@@ -11,5 +11,65 @@
   server_script: "provisioning/bootstrap.sh"
   storage_bootstrap: "provisioning/storage_list.yml"
   server_bootstrap: "provisioning/deploy.yml"
-  ansible_version: "2.9.2"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-controller-83"
+  vagrant_box: "bento/centos-7.7"
+  vbox_name: "vbox-controller-83"
+  vbox_ram: 2048
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.18.83
+  guest_port: 80
+  host_port: 882
+  server_script: "provisioning/bootstrap.sh"
+  storage_bootstrap: "provisioning/storage_list.yml"
+  server_bootstrap: "provisioning/deploy.yml"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-controller-84"
+  vagrant_box: "bento/fedora-32"
+  vbox_name: "vbox-controller-84"
+  vbox_ram: 2048
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.18.84
+  guest_port: 80
+  host_port: 882
+  server_script: "provisioning/bootstrap.sh"
+  storage_bootstrap: "provisioning/storage_list.yml"
+  server_bootstrap: "provisioning/deploy.yml"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-controller-85"
+  vagrant_box: "centos/8"
+  vbox_name: "vbox-controller-85"
+  vbox_ram: 2048
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.18.85
+  guest_port: 80
+  host_port: 882
+  server_script: "provisioning/bootstrap.sh"
+  storage_bootstrap: "provisioning/storage_list.yml"
+  server_bootstrap: "provisioning/deploy.yml"
+  # ansible_version: "2.9.2"
+  ansible_compatibility_mode: "2.0"
+
+- vagrant_box_host: "vg-controller-86"
+  vagrant_box: "fedora/32-cloud-base"
+  vbox_name: "vbox-controller-86"
+  vbox_ram: 2048
+  vbox_cpu: 2
+  network_type: "private_network"
+  vagrant_box_ip: 192.168.18.85
+  guest_port: 80
+  host_port: 882
+  server_script: "provisioning/bootstrap.sh"
+  storage_bootstrap: "provisioning/storage_list.yml"
+  server_bootstrap: "provisioning/deploy.yml"
+  # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0"
