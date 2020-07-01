@@ -9,7 +9,7 @@ echo "==========================================================================
 vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
-
+echo "========================================================================================="
 # #https://github.com/chef/bento/tree/master/packer_templates/centos
 # vagrant box add "bento/centos-7.8" --provider=virtualbox
 # vagrant mutate "bento/centos-7.8" libvirt
