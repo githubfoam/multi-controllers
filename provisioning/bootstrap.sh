@@ -14,5 +14,6 @@ echo "             (__)\       )\/\                                             
 echo "                 ||----w |                                                         "
 echo "                 ||     ||                                                         "
 echo "=========================================================================================="
-
+dnf update
+dnf install ansible -y && ansible --version
 lsblk
