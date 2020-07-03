@@ -21,10 +21,11 @@ echo "==========================================================================
 # vagrant mutate "bento/centos-8.2" libvirt
 # vagrant up --provider=libvirt "vg-controller-83"
 
+#No output has been received in the last 10m0s, this potentially indicates a stalled build or something wrong with the build itself.
 #https://github.com/chef/bento/tree/master/packer_templates/centos
-vagrant box add "bento/fedora-32" --provider=virtualbox
-vagrant mutate "bento/fedora-32" libvirt
-vagrant up --provider=libvirt "vg-controller-84"
+# vagrant box add "bento/fedora-32" --provider=virtualbox
+# vagrant mutate "bento/fedora-32" libvirt
+# vagrant up --provider=libvirt "vg-controller-84"
 
 # https://app.vagrantup.com/centos/boxes/8
 vagrant box add "centos/8" --provider=libvirt
