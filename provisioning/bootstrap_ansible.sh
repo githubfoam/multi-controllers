@@ -14,5 +14,7 @@ echo "             (__)\       )\/\                                             
 echo "                 ||----w |                                                         "
 echo "                 ||     ||                                                         "
 echo "==================================================================================="
-dnf update
-dnf install ansible -y && ansible --version
+dnf -y update
+dnf info ansible
+dnf -y install ansible
+ansible --version
