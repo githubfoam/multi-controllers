@@ -16,4 +16,4 @@ echo "                 ||     ||                                                
 echo "=========================================================================================="
 dnf update
 dnf install ansible -y && ansible --version
-lsblk
+# lsblk

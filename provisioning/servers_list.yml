@@ -38,7 +38,7 @@
   vagrant_box_ip: 192.168.18.84
   guest_port: 80
   host_port: 882
-  server_script: "provisioning/fedora.sh"
+  server_script: "provisioning/bootstrap.sh"
 # storage_bootstrap: "provisioning/storage_list.yml" # run only locally
   server_bootstrap: "provisioning/deploy.yml"
   # ansible_version: "2.9.2"
@@ -68,7 +68,7 @@
   vagrant_box_ip: 192.168.18.85
   guest_port: 80
   host_port: 882
-  server_script: "provisioning/bootstrap.sh"
+  server_script: "provisioning/fedora-32-cloud-base.sh"
 # storage_bootstrap: "provisioning/storage_list.yml" # run only locally
   server_bootstrap: "provisioning/deploy.yml"
   # ansible_version: "2.9.2"
