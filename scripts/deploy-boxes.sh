@@ -27,9 +27,10 @@ echo "==========================================================================
 # vagrant mutate "bento/fedora-32" libvirt
 # vagrant up --provider=libvirt "vg-controller-84"
 
+# Ansible provision OK
 # https://app.vagrantup.com/centos/boxes/8
-vagrant box add "centos/8" --provider=libvirt
-vagrant up --provider=libvirt "vg-controller-85"
+# vagrant box add "centos/8" --provider=libvirt
+# vagrant up --provider=libvirt "vg-controller-85"
 
 # https://app.vagrantup.com/fedora/boxes/32-cloud-base
 vagrant box add "fedora/32-cloud-base" --provider=libvirt

@@ -5,6 +5,10 @@ set -o nounset
 set -o xtrace
 # set -eox pipefail #safety for script
 
+dnf -y update
+dnf info ansible
+dnf -y install ansible
+ansible --version
 echo "===================================================================================="
                           hostnamectl status
 echo "===================================================================================="
