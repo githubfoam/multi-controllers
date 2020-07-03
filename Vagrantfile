@@ -59,17 +59,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # SHELL
           box.vm.provision "shell", path: server["server_script"]
 
-          box.vm.provision "ansible_local" do |ansible|
-              # ansible.compatibility_mode = "2.0"
-              ansible.compatibility_mode = server["ansible_compatibility_mode"]
-              # ansible.version = server["ansible_version"] # not pinning version for auto updates
-              ansible.playbook = server["server_bootstrap"]
-              # ansible.inventory_path = 'provisioning/hosts'
-              # ansible.verbose = "vvvv" # debug
-              # ansible.galaxy_role_file = "/vagrant/requirements.yml"
-              # ansible.galaxy_roles_path = "/etc/ansible/roles"
-              # ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
-           end # end if box.vm.provision
+          # box.vm.provision "ansible_local" do |ansible|
+          #     # ansible.compatibility_mode = "2.0"
+          #     ansible.compatibility_mode = server["ansible_compatibility_mode"]
+          #     # ansible.version = server["ansible_version"] # not pinning version for auto updates
+          #     ansible.playbook = server["server_bootstrap"]
+          #     # ansible.inventory_path = 'provisioning/hosts'
+          #     # ansible.verbose = "vvvv" # debug
+          #     # ansible.galaxy_role_file = "/vagrant/requirements.yml"
+          #     # ansible.galaxy_roles_path = "/etc/ansible/roles"
+          #     # ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
+          #  end # end if box.vm.provision
 
         end # end of config.vm
       end  # end of servers_list.each loop

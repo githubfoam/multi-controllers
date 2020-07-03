@@ -18,9 +18,9 @@ matrix:
         - source ~venvpy3/bin/activate
         - pip install -r requirements.txt
       script:
-          # - sudo make deploy-libvirt
-          # - sudo make deploy-vagrant
-          #- sudo make deploy-boxes
-        - travis_wait 40 bash waitfortrav.sh          
+        - sudo make deploy-libvirt
+        - sudo make deploy-vagrant
+        - sudo make deploy-boxes
+        # - travis_wait 40 bash waitfortrav.sh
       after_success:
         - deactivate
