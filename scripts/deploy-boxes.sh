@@ -15,10 +15,11 @@ echo "==========================================================================
 # vagrant mutate "bento/centos-7.8" libvirt
 # vagrant up --provider=libvirt "vg-controller-82"
 
+# Ansible provision OK
 #https://github.com/chef/bento/tree/master/packer_templates/centos
-vagrant box add "bento/centos-8.2" --provider=virtualbox
-vagrant mutate "bento/centos-8.2" libvirt
-vagrant up --provider=libvirt "vg-controller-83"
+# vagrant box add "bento/centos-8.2" --provider=virtualbox
+# vagrant mutate "bento/centos-8.2" libvirt
+# vagrant up --provider=libvirt "vg-controller-83"
 
 #https://github.com/chef/bento/tree/master/packer_templates/centos
 vagrant box add "bento/fedora-32" --provider=virtualbox
