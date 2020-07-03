@@ -1,0 +1,44 @@
+---
+- name: "Load a variable file based on the OS type, or a default if not found"
+  include_vars: "{{ item }}"
+  with_first_found:
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - "{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
+      - default.yml
+
+- name: "Uninstall old versions"
+  package:
+    name: '{{ old_versions }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: absent
+
+- name: "Delete all images, containers, and volumes"
+  file:
+    path: /var/lib/docker
+    state: absent
+
+# [WARNING]: Could not find aptitude. Using apt-get instead fix
+- name: "APT: Install aptitude package"
+  apt:
+   name: aptitude
+   force_apt_get: yes
+
+- name: "Add Docker GPG key"
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: "Add Docker APT repository"
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+    state: present
+    filename: 'docker-official'
+    update_cache: yes
+
+- name: "Install packages to allow apt to use a repository over HTTPS"
+  package:
+    name: '{{ docker_packages }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: latest
+  notify: started_docker

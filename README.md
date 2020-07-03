@@ -6,7 +6,7 @@ Travis (.com) dev branch:
 
 
 ~~~
-storage layout "storage_list.yml"
+runs only locally - storage layout "storage_list.yml"
 
 $ lsblk
 NAME            MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
