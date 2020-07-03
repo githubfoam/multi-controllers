@@ -32,7 +32,7 @@ echo "==========================================================================
 # vagrant up --provider=libvirt "vg-controller-85"
 
 # https://app.vagrantup.com/fedora/boxes/32-cloud-base
-vagrant box add "fedora/32-cloud-base"--provider=libvirt
+vagrant box add "fedora/32-cloud-base" --provider=libvirt
 vagrant up --provider=libvirt "vg-controller-86"
 
 vagrant box list #veridy installed boxes
