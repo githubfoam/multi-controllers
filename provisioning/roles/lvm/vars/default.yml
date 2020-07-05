@@ -1,0 +1,5 @@
+---
+dependencies:
+  lvm:
+    - lvm2
+    - thin-provisioning-tools

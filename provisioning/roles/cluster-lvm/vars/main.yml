@@ -1,2 +1,2 @@
 ---
-# vars file for common
+root_vg: "{% for mount in ansible_mounts %}{% if mount['mount'] == '/' %}{% for i in ansible_lvm['lvs'] %}{% set a = ansible_lvm['lvs'][i]['vg']|replace('-','--') %}{% set b = i|replace('-','--') %}{% set c = [ '/dev/mapper/', a, '-', b ]|join %}{% if mount['device'] == c %}{{ ansible_lvm['lvs'][i]['vg'] }}{% endif %}{% endfor %}{% endif %}{% endfor %}"

@@ -1,0 +1,40 @@
+---
+- name: "Load a variable file based on the OS type, or a default if not found"
+  include_vars: "{{ item }}"
+  with_first_found:
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - "{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
+      - default.yml
+
+- name: Check if cluster_type is defined when running EL6
+  fail:
+    msg: 'cluster_type must be defined on EL6 for tagging variant'
+  # when: ansible_distribution_major_version == "6" and not cluster_type and HALVMtype == "tagging"
+
+- name: Check if proper HALVMtype is selected for EL8 platform
+  fail:
+    msg: 'On EL8 you have use HALVMtype:"systemid" at the moment.'
+  when: ansible_distribution_major_version == "8" and HALVMtype != "systemid"
+
+- name: Disable use_lvmetad in /etc/lvm/lvm.conf if it exists
+  lineinfile:
+    dest: '/etc/lvm/lvm.conf'
+    regexp: '^\s+use_lvmetad'
+    line: '        use_lvmetad = 0'
+  notify:
+    - rebuild initramfs
+    - rebuild initrd
+  when: ansible_distribution_major_version in [ "6", "7" ]
+
+- name: Configure volume_list in /etc/lvm/lvm.conf
+  lineinfile:
+    dest: '/etc/lvm/lvm.conf'
+    state: 'present'
+    regexp: '^\s+volume_list\s*='
+    line: "        volume_list = [ \"{{ [ root_vg ]|union(local_vg_list|default([]))|union(additional_volumes|default([]))|join('\",\"'|safe) }}\" ]"
+    insertafter: '^activation {'
+  notify:
+    - rebuild initramfs
+    - rebuild initrd
+  when: ansible_distribution_major_version in [ "6", "7" ] and HALVMtype == "tagging" or local_vg_list is defined

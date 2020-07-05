@@ -11,6 +11,3 @@
 
 - name: "Install {{ ansible_distribution }}-{{ ansible_distribution_version }}"
   include_tasks: "{{ ansible_distribution }}_{{ ansible_distribution_version }}_install.yml"
-
-- name: "Configure {{ ansible_distribution }}-{{ ansible_distribution_version }}"
-  include_tasks: "configure/configure-{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
