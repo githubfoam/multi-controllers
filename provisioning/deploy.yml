@@ -18,17 +18,18 @@
 #   become: yes
 #   roles:
 #     - docker-compose
-# 
+#
 # - name: "Deploy docker-compose"
 #   gather_facts: true
 #   hosts:  vg-controller-85
 #   become: yes
 #   roles:
 #     - docker-compose
-#
-# - name: "Deploy docker-compose"
-#   gather_facts: true
-#   hosts:  vg-controller-84
-#   become: yes
-#   roles:
-#     - cluster-lvm
+
+- name: "Deploy docker-compose"
+  gather_facts: true
+  hosts:  vg-controller-84
+  become: yes
+  roles:
+    # - cluster-lvm
+    - docker-compose

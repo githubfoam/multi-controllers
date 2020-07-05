@@ -32,9 +32,10 @@ echo "==========================================================================
 # vagrant box add "centos/8" --provider=libvirt
 # vagrant up --provider=libvirt "vg-controller-85"
 
+#vg-controller-86: /tmp/vagrant-shell: line 8:  3409 Killed                  dnf -y update
 # https://app.vagrantup.com/fedora/boxes/32-cloud-base
-vagrant box add "fedora/32-cloud-base" --provider=libvirt
-vagrant up --provider=libvirt "vg-controller-86"
+# vagrant box add "fedora/32-cloud-base" --provider=libvirt
+# vagrant up --provider=libvirt "vg-controller-86"
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet

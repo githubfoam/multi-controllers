@@ -1,0 +1,35 @@
+---
+- name: "Load a variable file based on the OS type, or a default if not found"
+  include_vars: "{{ item }}"
+  with_first_found:
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      - "{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
+      - default.yml
+
+- name: "Uninstall old versions"
+  package:
+    name: '{{ old_versions }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: absent
+
+- name: "Delete all images, containers, and volumes"
+  file:
+    path: /var/lib/docker
+    state: absent
+
+- name: "Add docker repository"
+  yum_repository:
+    name: docker-ce
+    description: docker-ce repository
+    file: docker-ce
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: "Install docker packages "
+  package:
+    name: '{{ docker_packages }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: latest
+  notify: started_docker
