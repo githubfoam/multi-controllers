@@ -34,11 +34,23 @@ echo "==========================build ubuntu fio================================
 sudo docker build -t githubfoam:fio.ubuntu -<<EOF
 
 FROM ubuntu:20.10
-RUN apt-get -qqy update && apt-get install -qqy fio \
-   wget \
-   libqt5gui5 \
-   gnuplot \
-   python2.7
+# RUN apt-get -qqy update && apt-get install -qqy fio \
+#    wget \
+#    libqt5gui5 \
+#    gnuplot \
+#    python2.7
+
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qqy tzdata && \ # set noninteractive installation
+    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \ ## set your timezone
+    dpkg-reconfigure --frontend noninteractive tzdata
+RUN apt-get update -qq && \
+    apt-get -qqy install fio \
+    tzdata \
+    wget \
+    libqt5gui5 \
+    gnuplot \
+    python2.7
+
 VOLUME /data
 WORKDIR /data
 ENTRYPOINT [ "fio" ]
