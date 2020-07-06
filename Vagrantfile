@@ -40,8 +40,8 @@ FROM ubuntu:20.10
 #    gnuplot \
 #    python2.7
 
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qqy tzdata && \ # set noninteractive installation
-    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \ ## set your timezone
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qqy tzdata &&\ # set noninteractive installation
+    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime &&\ ## set your timezone
     dpkg-reconfigure --frontend noninteractive tzdata
 RUN apt-get update -qq && \
     apt-get -qqy install fio \
