@@ -1,0 +1,16 @@
+# job file without volume mount (read speed inside docker)
+# docker run xridge/fio /jobs/rand-read.fio
+# job file with volume mount
+# docker run -v $(pwd)/data:/data xridge/fio /jobs/rand-read.fio
+# custom fio job file
+# docker run -v $(pwd)/data:/data -v /path/to/job.fio:/jobs/job.fio xridge/fio /jobs/job.fio
+
+FROM alpine
+
+RUN apk add --no-cache fio
+
+COPY jobs /jobs
+VOLUME /data
+WORKDIR /data
+
+ENTRYPOINT [ "fio" ]

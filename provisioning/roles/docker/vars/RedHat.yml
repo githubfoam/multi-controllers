@@ -1,5 +1,13 @@
 ---
-old_versions:
+docker_packages_install:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+docker_packages_uninstall:
     - docker-ce
     - docker
     - docker-client
@@ -9,12 +17,3 @@ old_versions:
     - docker-latest-logrotate
     - docker-logrotate
     - docker-engine
-
-docker_packages:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
-    - docker-compose

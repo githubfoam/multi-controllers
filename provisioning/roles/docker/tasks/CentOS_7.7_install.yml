@@ -1,0 +1,73 @@
+---
+- name: "Install docker packages, Load a variable file based on the OS type, or a default if not found"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+    -  "{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
+    - default.yaml
+
+# - name: "Uninstall old versions"
+#   package:
+#     name: "{{ item }}"
+#     state: absent
+#   with_items:
+#     - docker-ce
+#     - docker
+#     - docker-client
+#     - docker-client-latest
+#     - docker-common
+#     - docker-latest
+#     - docker-latest-logrotate
+#     - docker-logrotate
+#     - docker-engine
+- name: "Uninstall old versions"
+  package:
+    name: '{{ docker_packages_uninstall }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: absent
+
+- name: "Delete all images, containers, and volumes"
+  file:
+    path: /var/lib/docker
+    state: absent
+- name: "Add docker repository"
+  yum_repository:
+    name: docker-ce
+    description: docker-ce repository
+    file: docker-ce
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+# - name: "Install docker packages "
+#   package:
+#     name: "{{ item }}"
+#     state: latest
+#   with_items:
+#     - yum-utils
+#     - device-mapper-persistent-data
+#     - lvm2
+#     - docker-ce
+#     - docker-ce-cli
+#     - containerd.io
+
+- name: "Install docker packages"
+  package:
+    name: '{{ docker_packages_install }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: present
+
+- name: "Make sure docker service is running"
+  systemd:
+    state: started
+    enabled: yes
+    name: docker
+- name: "Ensure group docker exists"
+  group:
+    name: docker
+    state: present
+- name: "Manage Docker as a non-root user"
+  user:
+    name: vagrant
+    groups: docker
+    append: yes

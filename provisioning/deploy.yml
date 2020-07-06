@@ -27,7 +27,8 @@
     # - { role: 'cluster-lvm' }
     # - lvm
     # - cluster-lvm
-    - docker-compose
+    # - docker # TESTED_OK
+    - docker-compose # TESTED_OK install docker
 #
 # - name: "Deploy docker-compose"
 #   gather_facts: true

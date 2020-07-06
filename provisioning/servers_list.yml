@@ -77,6 +77,7 @@
 
 - vagrant_box_host: "vg-controller-87"
   vagrant_box: "bento/debian-10.4"
+  # vagrant_box: "debian/stretch64"
   vbox_name: "vbox-controller-87"
   vbox_ram: 1024
   vbox_cpu: 2

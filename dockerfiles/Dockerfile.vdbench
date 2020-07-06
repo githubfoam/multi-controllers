@@ -1,0 +1,12 @@
+#docker run -i --detach -v /dev:/dev -v /tmp:/tmp --privileged vdbench:v1 -j -f/tmp/vdb1/vdb1.txt -o /tmp/vdb1
+
+FROM openjdk:8-jre
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends csh && \
+    rm -rf /var/lib/apt/lists/*  && \
+    curl -L $DOWNLOADURL -o vdbench501.zip && \
+    mkdir vdbench && cd vdbench && \
+    unzip ../vdbench501.zip && rm ../vdbench501.zip && \
+    mkdir -p /opt && mv ../vdbench /opt
+WORKDIR /opt/vdbench
+ENTRYPOINT ["/opt/vdbench/vdbench"]

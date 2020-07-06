@@ -60,17 +60,3 @@
     name: vagrant
     groups: docker
     append: yes
-      
-- name: "download the current stable release of Docker Compose"
-  shell: curl -L "https://github.com/docker/compose/releases/download/1.26.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-- name: "Apply executable permissions to the binary"
-  shell: chmod +x /usr/local/bin/docker-compose
-
-
-- name: "Test the installation"
-  shell: docker-compose --version
-  register: dctest
-
-- debug: msg={{ dctest.stdout }}
-- debug: var=dctest

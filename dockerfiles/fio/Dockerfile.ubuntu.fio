@@ -1,0 +1,12 @@
+FROM ubuntu:20.10
+
+RUN apt-get -y update && apt-get install -qqy fio \
+   wget \
+   libqt5gui5 \
+   gnuplot \
+   python2.7
+
+VOLUME /data
+WORKDIR /data
+
+ENTRYPOINT [ "fio" ]

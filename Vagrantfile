@@ -13,6 +13,39 @@ require 'yaml'
 #  server configs from YAML/YML file
 servers_list = YAML.load_file(File.join(File.dirname(__FILE__), 'provisioning/servers_list.yml'))
 
+$docker_build_script = <<SCRIPT
+echo "==========================build alpine fio=========================================================="
+sudo docker build -t githubfoam:fio.alpine -<<EOF
+
+# job file without volume mount (read speed inside docker)
+# docker run githubfoam/fio /jobs/rand-read.fio
+# job file with volume mount
+# docker run -v $(pwd)/data:/data githubfoam/fio /jobs/rand-read.fio
+# custom fio job file
+# docker run -v $(pwd)/data:/data -v /path/to/job.fio:/jobs/job.fio githubfoam/fio /jobs/job.fio
+FROM alpine
+RUN apk add --no-cache fio
+VOLUME /data
+WORKDIR /data
+ENTRYPOINT [ "fio" ]
+EOF
+echo "===================================================================================="
+echo "==========================build ubuntu fio=========================================================="
+sudo docker build -t githubfoam:fio.ubuntu -<<EOF
+
+FROM ubuntu:20.10
+RUN apt-get -qqy update && apt-get install -qqy fio \
+   wget \
+   libqt5gui5 \
+   gnuplot \
+   python2.7
+VOLUME /data
+WORKDIR /data
+ENTRYPOINT [ "fio" ]
+EOF
+echo "===================================================================================="
+SCRIPT
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  # Disable updates
  config.vm.box_check_update = false
@@ -70,6 +103,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               # ansible.galaxy_roles_path = "/etc/ansible/roles"
               # ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
            end # end if box.vm.provision
+
+          #depends on ansible provisioning that installs docker docker-compose
+          box.vm.provision "shell", inline: $docker_build_script, privileged: false
 
         end # end of config.vm
       end  # end of servers_list.each loop
