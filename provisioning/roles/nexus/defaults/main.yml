@@ -1,0 +1,13 @@
+---
+nexus_repo_major_ver: 3
+nexus_repo_minor_ver: '20.1-01'
+nexus_repo_os: unix
+nexus_repo_archive_type: tar.gz
+nexus_repo_mirror: http://download.sonatype.com/nexus
+
+nexus_repo_parent_install_dir: /usr/local
+
+nexus_repo_checksums:
+  '3.20.1-01':
+      # http://download.sonatype.com/nexus/3/nexus-3.20.1-01-unix.tar.gz.sha1
+      unix: sha1:5cabc748671dc510e4374548ac8c9b0f4b2517c1

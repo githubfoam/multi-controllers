@@ -19,16 +19,17 @@
 #   roles:
 #     - docker-compose
 
-- name: "Deploy docker-compose"
+- name: "Deploy ansible role"
   gather_facts: true
   hosts:  vg-controller-87
   become: yes
   roles:
     # - { role: 'cluster-lvm' }
-    # - lvm
-    # - cluster-lvm
+    # - lvm # TESTING
+    # - cluster-lvm # TESTING
+    - nexus # TESTING
     # - docker # TESTED_OK
-    - docker-compose # TESTED_OK install docker
+    # - docker-compose # TESTED_OK install docker
 #
 # - name: "Deploy docker-compose"
 #   gather_facts: true
