@@ -1,12 +1,11 @@
 ---
-system_packages:
-  - unzip
-  - tar
-  - socat
-  - traceroute
-  - mtr
-  - tcpdump
-  - net-tools
-  ###IO##
-  - fio
-  - iperf
+nexus_repo_name: nexus-{{ nexus_repo_ver }}
+nexus_repo_tgz: '{{ nexus_repo_name }}-{{ nexus_repo_os }}.{{ nexus_repo_archive_type }}'
+nexus_repo_ver: '{{ nexus_repo_major_ver }}.{{ nexus_repo_minor_ver }}'
+
+nexus_repo_tgz_url: '{{ nexus_repo_mirror }}/{{ nexus_repo_major_ver }}/{{ nexus_repo_tgz }}'
+nexus_repo_checksum: '{{ nexus_repo_checksums[nexus_repo_ver][nexus_repo_os] }}'
+
+nexus_repo_install_dir: '{{ nexus_repo_parent_install_dir }}/{{ nexus_repo_name }}'
+nexus_repo_link_dir: '{{ nexus_repo_parent_install_dir }}/nexus'
+

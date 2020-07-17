@@ -27,6 +27,7 @@
     # - { role: 'cluster-lvm' }
     # - lvm # TESTING
     # - cluster-lvm # TESTING
+    - sonarqube # TESTING
     - nexus # TESTING
     # - docker # TESTED_OK
     # - docker-compose # TESTED_OK install docker

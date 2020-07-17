@@ -1,0 +1,57 @@
+---
+#https://docs.ansible.com/ansible/2.3/include_vars_module.html
+- name: "Load a variable file based on the OS type, or a default if not found"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+    - "{{ ansible_distribution }}_{{ ansible_distribution_version }}.yml"
+    - default.yml
+
+
+- name: "Install system packages"
+  package:
+    name: '{{ system_packages }}'
+    use: '{{ ansible_pkg_mgr }}'
+    state: present
+    
+- name: "check for install dir"
+  stat:
+    path: '{{ sonarqube_install_dir }}'
+  changed_when: False
+  register: sonarqube_binary
+
+- name : "Install sonarqube"
+  block:
+    - name: download
+      get_url:
+        url: '{{ sonarqube_url }}'
+        dest: /tmp/{{ sonarqube_zip }}
+        checksum: '{{ sonarqube_checksum }}'
+        mode: 0644
+    - name: unarchive
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ sonarqube_zip }}
+        dest: '{{ sonarqube_parent_install_dir }}'
+        creates: '{{ sonarqube_install_dir }}'
+  when: not sonarqube_binary.stat.exists        
+  always:
+    - name: cleanup
+      file:
+        path: /tmp/{{ sonarqube_zip }}
+        state: absent
+
+- name: link
+  file:
+    src: '{{ sonarqube_install_dir }}'
+    dest: '{{ sonarqube_link_dir }}'
+    state: link
+
+- name: "add to the path"
+  with_items:
+    - f: sonarqube.sh
+      d: /etc/profile.d
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m | default("0644") }}'
