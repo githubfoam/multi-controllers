@@ -118,7 +118,7 @@
   vagrant_box_ip: 192.168.18.89
   guest_port: 80
   host_port: 884
-  server_script: "provisioning/provision_salt_master.sh"
+  server_script: "provisioning/provision_salt_minion.sh"
 # storage_bootstrap: "provisioning/storage_list.yml" # run only locally
   server_bootstrap: "provisioning/deploy.yml"
   # ansible_version: "2.9.2"
@@ -134,7 +134,7 @@
   vagrant_box_ip: 192.168.18.90
   guest_port: 80
   host_port: 885
-  server_script: "provisioning/provision_salt_master.sh"
+  server_script: "provisioning/provision_salt_minion.sh"
 # storage_bootstrap: "provisioning/storage_list.yml" # run only locally
   server_bootstrap: "provisioning/deploy.yml"
   # ansible_version: "2.9.2"
