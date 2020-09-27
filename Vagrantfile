@@ -69,6 +69,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           box.vm.hostname = server["vagrant_box_host"]
           box.vm.network server["network_type"], ip: server["vagrant_box_ip"]
           box.vm.network "forwarded_port", guest: server["guest_port"], host: server["host_port"],  id: 'elastic_port'
+
+          box.vm.synced_folder "pillar/", "/srv/pillar/"
+          box.vm.synced_folder "salt/", "/srv/salt/"
+
           box.vm.provider "virtualbox" do |vb|
               vb.name = server["vbox_name"]
               vb.memory = server["vbox_ram"]
@@ -118,7 +122,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
            end # end if box.vm.provision
 
           #depends on ansible provisioning that installs docker docker-compose
-          box.vm.provision "shell", inline: $docker_build_script, privileged: false
+          # box.vm.provision "shell", inline: $docker_build_script, privileged: false
 
         end # end of config.vm
       end  # end of servers_list.each loop
