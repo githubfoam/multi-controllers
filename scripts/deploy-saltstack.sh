@@ -45,6 +45,8 @@ echo "==========================================================================
 # https://app.vagrantup.com/centos/boxes/8
 vagrant box add "centos/8" --provider=libvirt
 vagrant up --provider=libvirt "master"
+vagrant up --provider=libvirt "client1"
+vagrant up --provider=libvirt "client2"
 
 vagrant box list #veridy installed boxes
 vagrant status #Check the status of the VMs to see that none of them have been created yet
