@@ -91,7 +91,7 @@
   # ansible_version: "2.9.2"
   ansible_compatibility_mode: "2.0"
 
-- vagrant_box_host: "vg-controller-88"
+- vagrant_box_host: "master"
   vagrant_box: "centos/8"
   vbox_name: "vbox-controller-88"
   vbox_ram: 4096
@@ -100,7 +100,7 @@
   vagrant_box_ip: 192.168.18.88
   guest_port: 80
   host_port: 883
-  server_script: "provisioning/bootstrap.sh"
+  server_script: "provisioning/provision_salt_master.sh"
 # storage_bootstrap: "provisioning/storage_list.yml" # run only locally
   server_bootstrap: "provisioning/deploy.yml"
   # ansible_version: "2.9.2"
