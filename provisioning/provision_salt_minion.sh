@@ -18,9 +18,9 @@ echo "==========================================================================
 echo '192.168.18.88 salt' >> /etc/hosts
 cat /etc/hosts
 
-yum install salt-minion -y
-chkconfig salt-minion on
-echo 'client1' >> /etc/salt/minion_id
-echo 'client2' >> /etc/salt/minion_id
-service salt-minion start
-service salt-minion status
+# yum install salt-minion -y #No package salt-minion available.
+# chkconfig salt-minion on
+# echo 'client1' >> /etc/salt/minion_id
+# echo 'client2' >> /etc/salt/minion_id
+# service salt-minion start
+# service salt-minion status
