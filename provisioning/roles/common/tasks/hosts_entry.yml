@@ -13,4 +13,6 @@
   - { ip: 192.168.18.86, namelong: vg-controller-86.local, nameshort: vg-controller-86 }
   - { ip: 192.168.18.87, namelong: vg-controller-87.local, nameshort: vg-controller-87 }
   - { ip: 192.168.18.88, namelong: master.local, nameshort: master }  
+  - { ip: 192.168.18.89, namelong: client1.local, nameshort: client1 }  
+  - { ip: 192.168.18.90, namelong: client2.local, nameshort: client2 }      
   # when: add_host_entries
