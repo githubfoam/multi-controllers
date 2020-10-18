@@ -8,41 +8,7 @@ matrix:
   fast_finish: true
   include:
 
-    # - name: "build multicontroller - bionic"
-    #   dist: bionic
-    #   language: python
-    #   python: 3.7
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #     - pip install -r requirements.txt
-    #   script:
-    #     - sudo make deploy-libvirt
-    #     - sudo make deploy-vagrant
-    #     - sudo make deploy-boxes
-    #     # - travis_wait 40 bash waitfortrav.sh
-    #   after_success:
-    #     - deactivate
-
-    # - name: "deploy vagrant saltstack provisioning - bionic"
-    #   dist: bionic
-    #   language: python
-    #   python: 3.7
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #     - pip install -r requirements.txt
-    #   script:
-    #     - sudo make deploy-libvirt
-    #     - sudo make deploy-vagrant
-    #     - sudo make deploy-saltstack
-    #     # - travis_wait 40 bash waitfortrav.sh
-    #   after_success:
-    #     - deactivate
-
-    - name: "deploy vagrant saltstack provisioning - bionic"
+    - name: "build multicontroller - bionic"
       dist: bionic
       language: python
       python: 3.7
@@ -54,7 +20,9 @@ matrix:
       script:
         - sudo make deploy-libvirt
         - sudo make deploy-vagrant
-        - sudo make deploy-saltstack
+        - sudo make deploy-boxes
         # - travis_wait 40 bash waitfortrav.sh
       after_success:
-        - deactivate        
+        - deactivate
+
+        
