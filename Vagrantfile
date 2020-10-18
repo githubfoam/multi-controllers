@@ -70,8 +70,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           box.vm.network server["network_type"], ip: server["vagrant_box_ip"]
           box.vm.network "forwarded_port", guest: server["guest_port"], host: server["host_port"],  id: 'elastic_port'
 
-          box.vm.synced_folder "pillar/", "/srv/pillar/"
-          box.vm.synced_folder "salt/", "/srv/salt/"
+          # box.vm.synced_folder "pillar/", "/srv/pillar/"
+          # box.vm.synced_folder "salt/", "/srv/salt/"
 
           box.vm.provider "virtualbox" do |vb|
               vb.name = server["vbox_name"]
