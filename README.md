@@ -2,7 +2,7 @@
 sata sas scsi nvme ide
 
 Travis (.com) dev branch:
-[![Build Status](https://travis-ci.com/githubfoam/multi-controllers.svg?branch=dev)](https://travis-ci.com/githubfoam/multi-controllers)  
+[![Build Status](https://travis-ci.com/githubfoam/multi-controllers.svg?branch=master)](https://travis-ci.com/githubfoam/multi-controllers)  
 
 
 ~~~
