@@ -21,7 +21,6 @@ matrix:
         - sudo make deploy-libvirt
         - sudo make deploy-vagrant
         - sudo make deploy-boxes
-        # - travis_wait 40 bash waitfortrav.sh
       after_success:
         - deactivate
 
